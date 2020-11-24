@@ -3,10 +3,13 @@
 // load modules
 const express = require('express');
 const morgan = require('morgan');
+const bcryptjs = require('bcryptjs');
 const Sequelize = require('sequelize');
-const {json} = require('sequelize');
+const { Op, json } = require('sequelize');
+const auth = require('basic-auth');
 const { authenticateUser } = require('./middleware/auth-user');
 const { asyncHandler } = require('./middleware/asyncHandler');
+const { body, validationResult } = require('express-validator');
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
@@ -16,11 +19,16 @@ const sequelize = new Sequelize({
 // variable to enable global error logging
 const enableGlobalErrorLogging = process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'true';
 
+//variables
+const Course = require('./models').Course;
+const User = require('./models').User;
+
 // create the Express app
 const app = express();
 
 // setup morgan which gives us http request logging
 app.use(morgan('dev'));
+app.use(express.json());
 
 //Checking if the connection to database is successful
 (async () => {
@@ -85,7 +93,7 @@ app.post('/api/users', asyncHandler(async(req,res) => {
 
 //Returns a list of courses (including the user that owns each course)
 app.get('/api/courses', asyncHandler(async(req,res) => {
-  //200
+  
 }))
 
 //Returns the course (including the user that owns the course) for the provided course ID
