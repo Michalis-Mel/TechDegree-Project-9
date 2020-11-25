@@ -1,16 +1,10 @@
-
 # Full Stack JavaScript Techdegree v2 - REST API Project
 
-## Overview of the Provided Project Files
+A REST API which includes express routes to add, edit or delete a user, with validation errors and authentication. User password is hashed before stored in the database.
 
-We've supplied the following files for you to use: 
+Also includes routes to add a course. Editing or deleting a course will only be performed if the currrent user is the owner of that course. All with validation errors and authentication.
 
-* The `seed` folder contains a starting set of data for your database in the form of a JSON file (`data.json`) and a collection of files (`context.js`, `database.js`, and `index.js`) that can be used to create your app's database and populate it with data (we'll explain how to do that below).
-* We've included a `.gitignore` file to ensure that the `node_modules` folder doesn't get pushed to your GitHub repo.
-* The `app.js` file configures Express to serve a simple REST API. We've also configured the `morgan` npm package to log HTTP requests/responses to the console. You'll update this file with the routes for the API. You'll update this file with the routes for the API.
-* The `nodemon.js` file configures the nodemon Node.js module, which we are using to run your REST API.
-* The `package.json` file (and the associated `package-lock.json` file) contain the project's npm configuration, which includes the project's dependencies.
-* The `RESTAPI.postman_collection.json` file is a collection of Postman requests that you can use to test and explore your REST API.
+The courses table is associated with the users table and it displays the owner of the course from a connection to the user's id.
 
 ## Getting Started
 
@@ -33,6 +27,12 @@ And lastly, start the application.
 
 ```
 npm start
+```
+
+If you want to stop the application from running.
+
+```
+-ctrl + c on the terminal runnig the app
 ```
 
 To test the Express server, browse to the URL [http://localhost:5000/](http://localhost:5000/).
