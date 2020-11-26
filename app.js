@@ -115,7 +115,7 @@ app.get('/api/courses', asyncHandler(async(req,res) => {
 
 //Returns the course (including the user that owns the course) for the provided course ID
 app.get('/api/courses/:id', asyncHandler(async(req,res) => {
-  const course = await Course.findAll({
+  const course = await Course.findOne({
     where: {id: req.params.id},
     attributes: ["id", "userId", "title", "description", "estimatedTime", "materialsNeeded"],
     include: {
@@ -123,7 +123,12 @@ app.get('/api/courses/:id', asyncHandler(async(req,res) => {
       model:User
     }
   });
-  res.json(course);
+  if (course) {
+    res.json(course);
+  } else {
+    res.status(404).json({"Error" : "Course not found!"})    
+  }    
+  
 }))
 
 //Creates a course, sets the Location header to the URI for the course, and returns no content
