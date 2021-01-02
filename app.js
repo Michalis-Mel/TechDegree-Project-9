@@ -170,7 +170,7 @@ app.put('/api/courses/:id', authenticateUser, [
         res.status(403).json({ "Error" : "You are not authorized to edit this course"})
       }
     }else{
-      res.statu(404).end();
+      res.status(404).end();
     }
   }catch(error){
     if(error.name === "SequelizeValidationError") {

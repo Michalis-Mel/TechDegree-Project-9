@@ -6,6 +6,13 @@ Also includes routes to add a course. Editing or deleting a course will only be 
 
 The courses table is associated with the users table and it displays the owner of the course from a connection to the user's id.
 
+# Technologies used:
+
+- JavaScript
+- Express
+- Bcrypt
+- Sequilize
+
 ## Getting Started
 
 To get up and running with this project, run the following commands from the root of the folder that contains this README file.
